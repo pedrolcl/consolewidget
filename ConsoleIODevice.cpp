@@ -18,7 +18,6 @@ ConsoleIODevice::ConsoleIODevice(ConsoleWidget *w, QObject *parent)
     , readSinceLastEmit_(0)
 {
     setCurrentWriteChannel(ConsoleWidget::StandardOutput);
-
     open(QIODevice::ReadWrite | QIODevice::Unbuffered);
 }
 
@@ -80,7 +79,7 @@ qint64 ConsoleIODevice::writeData(const char *data, qint64 len)
 
 void ConsoleIODevice::consoleWidgetInput(const QString &in)
 {
-    QByteArray ba = in.toLatin1();
+    QByteArray ba = in.toUtf8();
     int sz = ba.size();
     if (bytesAvailable()) {
         if (readpos_) readbuff_ = readbuff_.mid(readpos_);

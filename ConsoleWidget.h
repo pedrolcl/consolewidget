@@ -10,7 +10,7 @@
 #include <QCompleter>
 
 class ConsoleIODevice;
-class QConsoleWidgetCompleter;
+class ConsoleWidgetCompleter;
 
 class ConsoleWidget : public QPlainTextEdit
 {
@@ -51,7 +51,7 @@ public:
     void write(const QString & message, const QTextCharFormat& fmt);
     static const QStringList& history()
     { return history_.strings_; }
-    void setCompleter(QConsoleWidgetCompleter* c);
+    void setCompleter(ConsoleWidgetCompleter *c);
     // get the current command line
     QString getCommandLine();
 
@@ -121,7 +121,7 @@ private:
     QString currentMultiLineCode_;
     ConsoleIODevice *iodevice_;
     QTextCharFormat chanFormat_[nConsoleChannels];
-    QConsoleWidgetCompleter* completer_;
+    ConsoleWidgetCompleter *completer_;
 };
 
 QTextStream &waitForInput(QTextStream &s);
@@ -129,9 +129,13 @@ QTextStream &inputMode(QTextStream &s);
 QTextStream &outChannel(QTextStream &s);
 QTextStream &errChannel(QTextStream &s);
 
-class QConsoleWidgetCompleter : public QCompleter
+class ConsoleWidgetCompleter : public QCompleter
 {
 public:
+    ConsoleWidgetCompleter(QObject *parent = nullptr)
+        : QCompleter(parent)
+    {}
+
     /*
      * Update the completion model given a string.  The given string
      * is the current console text between the cursor and the start of
@@ -139,7 +143,7 @@ public:
      *
      * Return the completion count
      */
-    virtual int updateCompletionModel(const QString& str) = 0;
+    virtual int updateCompletionModel(const QString &str) = 0;
 
     /*
      * Return the position in the command line where the completion

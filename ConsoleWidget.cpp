@@ -31,7 +31,7 @@ ConsoleWidget::ConsoleWidget(QWidget *parent)
     for(int i=0; i<nConsoleChannels; i++)
         chanFormat_[i] = fmt;
 
-    //chanFormat_[StandardOutput].setForeground(Qt::darkBlue);
+    // chanFormat_[StandardOutput].setForeground(Qt::darkBlue);
     chanFormat_[StandardError].setForeground(Qt::red);
 
     setTextInteractionFlags(Qt::TextEditorInteraction);
@@ -189,7 +189,7 @@ void ConsoleWidget::insertCompletion(const QString &completion)
     setTextCursor(tc);
 }
 
-void ConsoleWidget::setCompleter(QConsoleWidgetCompleter *c)
+void ConsoleWidget::setCompleter(ConsoleWidgetCompleter *c)
 {
     if (completer_)
     {
