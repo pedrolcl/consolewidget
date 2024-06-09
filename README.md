@@ -51,6 +51,6 @@ the user to enter a command and hit return.
 
 ## License
 
-SPDX-License-Identifier: MIT
-Copyright (c) 2020 George Apostolopoulos
+SPDX-License-Identifier: MIT  
+Copyright (c) 2020 George Apostolopoulos  
 Copyright (c) 2024 Pedro López-Cabanillas <plcl@users.sf.net>
