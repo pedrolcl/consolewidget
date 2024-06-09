@@ -1,0 +1,10 @@
+prefix=@CMAKE_INSTALL_PREFIX@
+exec_prefix=${prefix}
+libdir=@consolewidget_libdir@
+includedir=@consolewidget_includedir@
+
+Name: consolewidget
+Description:
+Version: @PROJECT_VERSION@
+Libs: -L${libdir} -lconsolewidget
+Cflags: -I${includedir}/consolewidget
